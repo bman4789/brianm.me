@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>{{title }}</title>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/components/foundation/css/foundation.css">
+    <!-- endinject -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- endinject -->
+    {{#if ENV_DEVELOPMENT}}
+      <script src="http://localhost:35729/livereload.js"></script>
+    {{/if}}
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    {{{body}}}
+
+    <!-- bower:js -->
+    <script src="/components/jquery/dist/jquery.js"></script>
+    <script src="/components/fastclick/lib/fastclick.js"></script>
+    <script src="/components/jquery.cookie/jquery.cookie.js"></script>
+    <script src="/components/jquery-placeholder/jquery.placeholder.js"></script>
+    <script src="/components/foundation/js/foundation.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <!-- endinject -->
+  </body>
+</html>
