@@ -1,7 +1,7 @@
 
 
 var express = require('express'),
-  config = require('./config/config'),
+  config = require('./config'),
   glob = require('glob'),
   mongoose = require('mongoose');
 
@@ -17,7 +17,7 @@ models.forEach(function (model) {
 });
 var app = express();
 
-require('./config/express')(app, config);
+require('./express')(app, config);
 
 app.listen(config.port);
 
