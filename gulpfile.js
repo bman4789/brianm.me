@@ -28,6 +28,19 @@ gulp.task('serve', ['inject'], function () {
   });
 });
 
+gulp.task('serve:dist', ['build'], function () {
+  $.livereload.listen();
+  $.nodemon({
+    script: 'dist/server/app.js',
+    ext: 'js coffee handlebars'
+  }).on('restart', function () {
+    setTimeout(function () {
+      $.livereload.changed(__dirname);
+    }, 500);
+  });
+});
+
+
 gulp.task('lint', function() {
   return gulp.src(['./public/js/*.js', './app/**/*.js'])
     .pipe($.jshint())
