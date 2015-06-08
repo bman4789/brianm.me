@@ -1,3 +1,5 @@
+'use strict';
+
 // Example model
 
 var mongoose = require('mongoose'),
