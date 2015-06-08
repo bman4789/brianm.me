@@ -74,7 +74,7 @@ gulp.task('build', function(callback) {
 // clean the dist folder
 gulp.task('clean', function(cb){
   //removes everything except a .git folder
-  $.del(['dist/**/*', '!dist /.git'], cb);
+  return $.del(['dist/**/*', '!dist /.git'], cb);
 });
 
 // concatenate and minify the js scripts into one single app.js file, then copy it to dist folder
