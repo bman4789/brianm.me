@@ -50,13 +50,17 @@ gulp.task('lint', function() {
 });
 
 gulp.task('inject', function(){
+  //making an array of bower components, and specific files that aren't listed as main (ie. plugins within a library)
+  var bower = bowerFiles();
+  bower.push('./public/components/foundation/js/foundation/foundation.topbar.js');
+  bower.push('./public/components/modernizr/modernizr.js');
   return gulp.src('./app/views/layouts/main.handlebars')
     // inject css files
     .pipe($.inject(gulp.src(['./public/css/*.css'], {read: false}), {ignorePath:'public'}))
     // inject js files
     .pipe($.inject(gulp.src(['./public/js/*.js'], {read: false}), {ignorePath:'public'}))
     // inject bower dependencies
-    .pipe($.inject(gulp.src(bowerFiles(), {read: false}), {name:'vendor', ignorePath:'public'}))
+    .pipe($.inject(gulp.src(bower, {read: false}), {name:'vendor', ignorePath:'public'}))
     .pipe(gulp.dest('./app/views/layouts'));
 });
 
@@ -90,7 +94,10 @@ gulp.task('build-scripts', function() {
 
 // same as above, with the bower files
 gulp.task('build-scripts-bower', function() {
-  return gulp.src(bowerFiles())
+  var bower = bowerFiles();
+  bower.push('./public/components/foundation/js/foundation/foundation.topbar.js');
+  bower.push('./public/components/modernizr/modernizr.js');
+  return gulp.src(bower)
     .pipe($.filter(['*.js']))
     .pipe($.concat('vendor.js'))
     .pipe($.uglify())

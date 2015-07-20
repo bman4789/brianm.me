@@ -2,19 +2,19 @@
 
 var express = require('express'),
   router = express.Router(),
-  mongoose = require('mongoose'),
-  Article = mongoose.model('Article');
+  Post = require('../models/post');
 
 module.exports = function (app) {
   app.use('/', router);
 };
 
 router.get('/', function (req, res, next) {
-  Article.find(function (err, articles) {
-    if (err) return next(err);
-    res.render('index', {
-      title: 'Generator-Express MVC',
-      articles: articles
-    });
+  var posts = [new Post({
+    "title": "dummy posty"
+  }), new Post()];
+  res.render('index', {
+    title: 'Brian Mitchell',
+    active: {active_home: true},
+    posts: posts
   });
 });
